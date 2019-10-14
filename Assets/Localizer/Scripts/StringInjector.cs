@@ -9,8 +9,6 @@ namespace yutoVR.Localizer
 		[SerializeField] string stringId;
 		public string Id => stringId;
 
-		[SerializeField] Component target;
-
 		void Awake()
 		{
 			this.AddInjector();
@@ -18,20 +16,22 @@ namespace yutoVR.Localizer
 
 		public void Inject(string text)
 		{
-			if (target is TextMesh textMesh)
+			if (GetComponent<TextMesh>() is TextMesh textMesh)
 			{
 				textMesh.text = text;
 			}
-			else if (target is TextMeshPro textMeshPro)
+			else if (GetComponent<TextMeshPro>() is TextMeshPro textMeshPro)
 			{
 				textMeshPro.text = text;
 			}
-			else if (target is Text uiText)
+			else if (GetComponent<Text>() is Text uiText)
 			{
 				uiText.text = text;
 			}
-
-			// TODO : ID がないときには警告
+			else
+			{
+				Debug.LogError("テキストを置換できるコンポーネントがありません。");
+			}
 		}
 	}
 }
