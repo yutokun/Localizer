@@ -51,7 +51,7 @@ namespace yutoVR.Localizer
 			base.OnInspectorGUI();
 
 			ResourceBridge.Load();
-			var text = ResourceBridge.GetStringFromId(injector.Id);
+			var text = ResourceBridge.GetStringFromId(injector.Id, "English");
 			if (text != null)
 			{
 				EditorGUILayout.HelpBox($"{text}", MessageType.Info);

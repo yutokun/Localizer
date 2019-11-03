@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 namespace yutoVR.Localizer
@@ -47,7 +46,7 @@ namespace yutoVR.Localizer
 
 		static int GetLanguageIndex(string languageName)
 		{
-			var i = Sheet[0].FindIndex(s => s == languageName);
+			var i = Sheet[0].FindIndex(s => s.Contains(languageName));
 			// TODO 言語がなかった場合の処理
 			return i;
 		}
@@ -82,6 +81,16 @@ namespace yutoVR.Localizer
 			{
 				return null;
 			}
+		}
+
+		public static string GetStringFromId(string id, string languageName)
+		{
+			var stringIndex = Sheet.FindIndex(words => words[0] == id);
+			if (stringIndex == -1) return null;
+
+			var langIndex = GetLanguageIndex(languageName);
+
+			return Sheet[stringIndex][langIndex];
 		}
 	}
 }
