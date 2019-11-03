@@ -7,7 +7,7 @@ namespace yutoVR.Localizer
 	public static class ResourceBridge
 	{
 		static readonly List<IInjector> Injectors = new List<IInjector>();
-		static readonly Dictionary<string, string> CurrentLang = new Dictionary<string, string>();
+		static readonly Dictionary<string, string> CurrentLangDictionary = new Dictionary<string, string>();
 		static string LastLangName;
 		static List<List<string>> Sheet;
 
@@ -33,12 +33,12 @@ namespace yutoVR.Localizer
 				languageIndex = GetLanguageIndex(languageName);
 			}
 
-			CurrentLang.Clear();
+			CurrentLangDictionary.Clear();
 			for (var i = 1; i < Sheet.Count; i++)
 			{
 				var key = Sheet[i][0];
 				var value = Sheet[i][languageIndex];
-				CurrentLang.Add(key, value);
+				CurrentLangDictionary.Add(key, value);
 			}
 
 			LastLangName = Sheet[0][languageIndex];
@@ -60,7 +60,7 @@ namespace yutoVR.Localizer
 		{
 			foreach (var injector in Injectors)
 			{
-				if (CurrentLang.TryGetValue(injector.Id, out var text))
+				if (CurrentLangDictionary.TryGetValue(injector.Id, out var text))
 				{
 					injector.Inject(text);
 				}
@@ -75,7 +75,7 @@ namespace yutoVR.Localizer
 		{
 			try
 			{
-				return CurrentLang[id];
+				return CurrentLangDictionary[id];
 			}
 			catch (KeyNotFoundException e)
 			{
