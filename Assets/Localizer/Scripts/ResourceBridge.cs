@@ -9,9 +9,9 @@ namespace yutoVR.Localizer
 		static readonly List<IInjector> injectors = new List<IInjector>();
 		static readonly Dictionary<string, string> currentLang = new Dictionary<string, string>();
 
+		[RuntimeInitializeOnLoadMethod]
 		public static void Initialize()
 		{
-			// TODO どこからも呼ばずに実行できないだろうか
 			Load();
 			InjectAll();
 		}
