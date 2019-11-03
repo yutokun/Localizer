@@ -72,11 +72,21 @@ namespace yutoVR.Localizer
 			}
 		}
 
+		/// <summary>
+		/// Get localized string from String ID.
+		/// </summary>
+		/// <param name="id">String ID</param>
+		/// <returns>Localized String</returns>
 		public static string GetStringFromId(string id)
 		{
 			return GetStringFromId(id, LastLangName);
 		}
 
+		/// <summary>
+		/// Get localized string of specific language from String ID.
+		/// </summary>
+		/// <param name="id">String ID</param>
+		/// <returns>Localized String</returns>
 		public static string GetStringFromId(string id, string languageName)
 		{
 			var stringIndex = Sheet.FindIndex(words => words[0] == id);
@@ -90,8 +100,8 @@ namespace yutoVR.Localizer
 		/// <summary>
 		/// Get dictionary contains string of all language for specific ID.
 		/// </summary>
-		/// <param name="id">String ID.</param>
-		/// <returns>Dictionary.</returns>
+		/// <param name="id">String ID</param>
+		/// <returns>Dictionary contains localized strings</returns>
 		public static Dictionary<string, string> GetDictionaryFromId(string id)
 		{
 			var stringIndex = Sheet.FindIndex(words => words[0] == id);
