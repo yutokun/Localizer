@@ -31,9 +31,7 @@ namespace yutoVR.Localizer
 			var languageIndex = 1; // 最初の言語
 			if (languageName != "")
 			{
-				languageIndex = Sheet[0].Select((lang, index) => new {Index = index, Value = lang})
-				                        .First(lang => lang.Value == languageName)
-				                        .Index;
+				languageIndex = GetLanguageIndex(languageName);
 			}
 
 			CurrentLang.Clear();
@@ -45,6 +43,13 @@ namespace yutoVR.Localizer
 			}
 
 			LastLangName = Sheet[0][languageIndex];
+		}
+
+		static int GetLanguageIndex(string languageName)
+		{
+			var i = Sheet[0].FindIndex(s => s == languageName);
+			// TODO 言語がなかった場合の処理
+			return i;
 		}
 
 		public static void AddInjector(this IInjector injector)
