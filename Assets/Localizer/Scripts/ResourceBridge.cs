@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace yutoVR.Localizer
@@ -91,6 +92,30 @@ namespace yutoVR.Localizer
 			var langIndex = GetLanguageIndex(languageName);
 
 			return Sheet[stringIndex][langIndex];
+		}
+
+		/// <summary>
+		/// Get dictionary contains string of all language for specific ID.
+		/// </summary>
+		/// <param name="id">String ID.</param>
+		/// <returns>Dictionary.</returns>
+		public static Dictionary<string, string> GetDictionaryFromId(string id)
+		{
+			var stringIndex = Sheet.FindIndex(words => words[0] == id);
+			if (stringIndex == -1) return null;
+
+			var languageList = Sheet[0].ToList();
+			languageList.RemoveAt(0);
+
+			var dict = new Dictionary<string, string>();
+
+			foreach (var language in languageList)
+			{
+				var text = GetStringFromId(id, language);
+				dict.Add(language, text);
+			}
+
+			return dict;
 		}
 	}
 }

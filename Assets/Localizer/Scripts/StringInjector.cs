@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Linq;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,10 +52,12 @@ namespace yutoVR.Localizer
 			base.OnInspectorGUI();
 
 			ResourceBridge.Load();
-			var text = ResourceBridge.GetStringFromId(injector.Id, "English");
-			if (text != null)
+			var dict = ResourceBridge.GetDictionaryFromId(injector.Id);
+			if (dict != null)
 			{
-				EditorGUILayout.HelpBox($"{text}", MessageType.Info);
+				var helpText = dict.Aggregate("", (current, item) => current + $"{item.Key}: {item.Value}\n");
+				helpText = helpText.TrimEnd('\n');
+				EditorGUILayout.HelpBox($"{helpText}", MessageType.Info);
 			}
 			else
 			{
