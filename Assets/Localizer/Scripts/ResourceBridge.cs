@@ -74,14 +74,7 @@ namespace yutoVR.Localizer
 
 		public static string GetStringFromId(string id)
 		{
-			try
-			{
-				return CurrentLangDictionary[id];
-			}
-			catch (KeyNotFoundException e)
-			{
-				return null;
-			}
+			return GetStringFromId(id, LastLangName);
 		}
 
 		public static string GetStringFromId(string id, string languageName)
