@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,33 @@ namespace yutoVR.Localizer
 			else
 			{
 				Debug.LogError("テキストを置換できるコンポーネントがありません。");
+			}
+		}
+	}
+
+	[CustomEditor(typeof(StringInjector))]
+	public class StringInjectorInspector : Editor
+	{
+		StringInjector injector;
+
+		void OnEnable()
+		{
+			injector = (StringInjector) target;
+		}
+
+		public override void OnInspectorGUI()
+		{
+			base.OnInspectorGUI();
+
+			ResourceBridge.Load();
+			var text = ResourceBridge.GetStringFromId(injector.Id);
+			if (text != null)
+			{
+				EditorGUILayout.HelpBox($"{text}", MessageType.Info);
+			}
+			else
+			{
+				EditorGUILayout.HelpBox($"ローカライズ ID: {injector.Id} は存在しません。", MessageType.Error);
 			}
 		}
 	}

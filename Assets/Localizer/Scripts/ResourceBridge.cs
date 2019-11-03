@@ -19,7 +19,7 @@ namespace yutoVR.Localizer
 			InjectAll();
 		}
 
-		static void Load()
+		public static void Load()
 		{
 			var path = Path.Combine(Application.streamingAssetsPath, "Sample.tsv"); // TODO パス良い感じに
 			Sheet = CSVParser.LoadFromPath(path, CSVParser.Delimiter.Tab);
@@ -64,6 +64,18 @@ namespace yutoVR.Localizer
 				{
 					Debug.LogError($"ローカライズ ID: {injector.Id} は存在しません。");
 				}
+			}
+		}
+
+		public static string GetStringFromId(string id)
+		{
+			try
+			{
+				return CurrentLang[id];
+			}
+			catch (KeyNotFoundException e)
+			{
+				return null;
 			}
 		}
 	}
