@@ -20,7 +20,7 @@ namespace yutoVR.Localizer
 			{
 				textMesh.text = text;
 			}
-			else if (GetComponent<TextMeshPro>() is TextMeshPro textMeshPro)
+			else if (GetComponent<TMP_Text>() is TMP_Text textMeshPro)
 			{
 				textMeshPro.text = text;
 			}
