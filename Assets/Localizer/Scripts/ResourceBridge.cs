@@ -19,6 +19,9 @@ namespace yutoVR.Localizer
 			InjectAll();
 		}
 
+		/// <summary>
+		/// Load localized strings to the memory.
+		/// </summary>
 		public static void Load()
 		{
 			var path = Path.Combine(Application.streamingAssetsPath, "LocalizedStrings.tsv");
@@ -39,6 +42,10 @@ namespace yutoVR.Localizer
 			ChangeLanguage(CurrentLanguageName ?? "");
 		}
 
+		/// <summary>
+		/// Change current language.
+		/// </summary>
+		/// <param name="languageName">ex. "Japanese" "English"</param>
 		public static void ChangeLanguage(string languageName)
 		{
 			var languageIndex = 0;
@@ -62,6 +69,9 @@ namespace yutoVR.Localizer
 			Injectors.Add(injector);
 		}
 
+		/// <summary>
+		/// Re-inject strings to all IInjectors.
+		/// </summary>
 		static void InjectAll()
 		{
 			var index = GetLanguageIndex(CurrentLanguageName);
