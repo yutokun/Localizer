@@ -41,7 +41,7 @@ namespace yutoVR.Localizer
 
 		public static void ChangeLanguage(string languageName)
 		{
-			var languageIndex = 1; // First Language
+			var languageIndex = 0;
 			if (languageName != "")
 			{
 				languageIndex = GetLanguageIndex(languageName);
