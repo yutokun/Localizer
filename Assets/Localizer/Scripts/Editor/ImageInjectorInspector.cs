@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace yutoVR.Localizer
@@ -19,9 +20,26 @@ namespace yutoVR.Localizer
 
 			Localizer.Load();
 
-			EditorGUILayout.TextField("Property Name", injector.propertyName);
+			var imageType = (ImageType) EditorGUILayout.EnumPopup("Image Type", injector.imageType);
+			injector.imageType = imageType;
 
 			var langCount = Localizer.LanguageList.Count;
+
+			switch (imageType)
+			{
+				case ImageType.Texture2D:
+					UpdateTexture2DInspector(langCount);
+					break;
+
+				case ImageType.Sprite:
+					UpdateSpriteInspector(langCount);
+					break;
+			}
+		}
+
+		void UpdateTexture2DInspector(int langCount)
+		{
+			EditorGUILayout.TextField("Property Name", injector.propertyName);
 
 			if (injector.texture2Ds == null)
 			{
@@ -41,6 +59,29 @@ namespace yutoVR.Localizer
 			{
 				var tex = EditorGUILayout.ObjectField(Localizer.LanguageList[i], injector.texture2Ds[i], typeof(Texture2D), false) as Texture2D;
 				injector.texture2Ds[i] = tex;
+			}
+		}
+
+		void UpdateSpriteInspector(int langCount)
+		{
+			if (injector.sprites == null)
+			{
+				injector.sprites = new Sprite[langCount];
+			}
+			else if (injector.sprites.Length != langCount)
+			{
+				var oldSprites = injector.sprites;
+				injector.sprites = new Sprite[langCount];
+				for (var i = 0; i < langCount; i++)
+				{
+					injector.sprites[i] = oldSprites[i];
+				}
+			}
+
+			for (var i = 0; i < langCount; i++)
+			{
+				var sprite = EditorGUILayout.ObjectField(Localizer.LanguageList[i], injector.sprites[i], typeof(Sprite), false) as Sprite;
+				injector.sprites[i] = sprite;
 			}
 		}
 	}
