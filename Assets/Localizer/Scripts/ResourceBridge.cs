@@ -10,7 +10,7 @@ namespace yutoVR.Localizer
 		static readonly List<IInjector> Injectors = new List<IInjector>();
 		static List<string> LanguageList = new List<string>();
 		static readonly Dictionary<string, List<string>> LocalizedStrings = new Dictionary<string, List<string>>();
-		static string CurrentLanguageName; // TODO インデックス管理で良くなってきたかも
+		static string CurrentLanguageName;
 
 		[RuntimeInitializeOnLoadMethod]
 		public static void Initialize()
