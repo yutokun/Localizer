@@ -16,11 +16,16 @@ This library intends to use at small Unity project that needs to be localized to
 ### Preparation
 
 1. Make UTF-8 TSV.
+
+   ![String Injector](doc/TSV.png)
+
 2. Place it to streaming assets.
 
 ### Automatic Injection
 
-Add **String Injector** component to your game object and enter String ID.
+Add **String Injector** next to the text component and enter String ID.
+
+![String Injector](doc/StringInjector.gif)
 
 Supported component:
 
