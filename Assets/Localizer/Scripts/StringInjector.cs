@@ -32,7 +32,7 @@ namespace yutoVR.Localizer
 			}
 			else
 			{
-				Debug.LogError("テキストを置換できるコンポーネントがありません。");
+				Debug.LogError("No component with replaceable text.");
 			}
 		}
 	}
@@ -61,7 +61,7 @@ namespace yutoVR.Localizer
 			}
 			else
 			{
-				EditorGUILayout.HelpBox($"ローカライズ ID: {injector.Id} は存在しません。", MessageType.Error);
+				EditorGUILayout.HelpBox($"String ID: {injector.Id} is not available.", MessageType.Error);
 			}
 		}
 	}

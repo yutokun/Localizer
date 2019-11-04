@@ -41,7 +41,7 @@ namespace yutoVR.Localizer
 
 		public static void ChangeLanguage(string languageName)
 		{
-			var languageIndex = 1; // 最初の言語
+			var languageIndex = 1; // First Language
 			if (languageName != "")
 			{
 				languageIndex = GetLanguageIndex(languageName);
@@ -73,7 +73,7 @@ namespace yutoVR.Localizer
 				}
 				else
 				{
-					Debug.LogError($"ローカライズ ID: {injector.Id} は存在しません。");
+					Debug.LogError($"String ID: {injector.Id} is not available.");
 				}
 			}
 		}
