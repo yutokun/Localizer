@@ -13,7 +13,7 @@ namespace yutoVR.Localizer
 		static string CurrentLanguageName;
 
 		[RuntimeInitializeOnLoadMethod]
-		public static void Initialize()
+		static void Initialize()
 		{
 			Load();
 			InjectAll();
