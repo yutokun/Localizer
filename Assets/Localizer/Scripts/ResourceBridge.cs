@@ -53,7 +53,7 @@ namespace yutoVR.Localizer
 		static int GetLanguageIndex(string languageName)
 		{
 			var i = LanguageList.FindIndex(s => s.Contains(languageName));
-			// TODO 言語がなかった場合の処理
+			if (i == -1) Debug.LogError($"Unavailable language name: {languageName}");
 			return i;
 		}
 
