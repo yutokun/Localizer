@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Localizer/Scenes/LocalizerSample.unity
+    path: Assets/Localizer/Example/Scenes/LocalizerSample.unity
     guid: 385caaeb95baf42f4b884c763ba7d4ec
   m_configObjects: {}
