@@ -11,6 +11,7 @@ namespace yutoVR.Localizer
 		public static List<string> LanguageList { get; private set; } = new List<string>();
 		static readonly Dictionary<string, List<string>> LocalizedStrings = new Dictionary<string, List<string>>();
 		public static string CurrentLanguageName { get; private set; }
+		static int CurrentLanguageIndex => GetLanguageIndex(CurrentLanguageName);
 
 		[RuntimeInitializeOnLoadMethod]
 		static void Initialize()
@@ -65,8 +66,7 @@ namespace yutoVR.Localizer
 		/// <returns>Activated language name</returns>
 		public static string ActivatePreviousLanguage()
 		{
-			var currentIndex = GetLanguageIndex(CurrentLanguageName);
-			var nextIndex = (int) Mathf.Repeat(currentIndex - 1f, LanguageList.Count);
+			var nextIndex = (int) Mathf.Repeat(CurrentLanguageIndex - 1, LanguageList.Count);
 			ChangeLanguage(LanguageList[nextIndex]);
 			InjectAll();
 			return LanguageList[nextIndex];
@@ -78,8 +78,7 @@ namespace yutoVR.Localizer
 		/// <returns>Activated language name</returns>
 		public static string ActivateNextLanguage()
 		{
-			var currentIndex = GetLanguageIndex(CurrentLanguageName);
-			var nextIndex = (int) Mathf.Repeat(currentIndex + 1f, LanguageList.Count);
+			var nextIndex = (int) Mathf.Repeat(CurrentLanguageIndex + 1, LanguageList.Count);
 			ChangeLanguage(LanguageList[nextIndex]);
 			InjectAll();
 			return LanguageList[nextIndex];
@@ -102,12 +101,11 @@ namespace yutoVR.Localizer
 		/// </summary>
 		public static void InjectAll()
 		{
-			var index = GetLanguageIndex(CurrentLanguageName);
 			foreach (var injector in Injectors)
 			{
 				if (LocalizedStrings.TryGetValue(injector.Id, out var strings))
 				{
-					injector.Inject(strings[index]);
+					injector.Inject(strings[CurrentLanguageIndex]);
 				}
 				else
 				{
@@ -136,8 +134,7 @@ namespace yutoVR.Localizer
 		{
 			if (!LocalizedStrings.ContainsKey(id)) return null;
 
-			var langIndex = GetLanguageIndex(languageName);
-			return LocalizedStrings[id][langIndex];
+			return LocalizedStrings[id][CurrentLanguageIndex];
 		}
 
 		/// <summary>
