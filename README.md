@@ -1,6 +1,6 @@
-# Localizer
-
-Localizer for Unity
+<h1 align="center">
+  <img width="480" height="240" src="doc/Logo.png">
+</h1>
 
 This library intends to use at small Unity project that needs to be localized to multiple languages.
 
