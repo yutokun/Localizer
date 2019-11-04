@@ -8,7 +8,8 @@ This library intends to use at small Unity project that needs to be localized to
 
 ## Features
 
-- Automatically inject strings to TextMesh, TextMeshPro, Text(UI) component.
+- Automatically inject strings to text-type component.
+- Automatically inject images to image-type component.
 - Simple API
 - Load multi-language definition file. (TSV)
 - Editor preview and useful warnings.
@@ -23,7 +24,7 @@ This library intends to use at small Unity project that needs to be localized to
 
 2. Place it to streaming assets.
 
-### Automatic Injection
+### Automatic String Injection
 
 Add **String Injector** next to the text component and enter String ID.
 
@@ -37,6 +38,20 @@ Supported component:
 - Text (UI)
 - TextMeshPro
 - TextMeshProUGUI
+
+### Automatic Image Injection
+
+Add **Image Injector** next to the game object and set images.
+
+Localized images will be injected when the component starts.
+
+![Image Injector](doc/ImageInjector.png)
+
+Supported component:
+
+- Renderer
+- Image
+- RawImage
 
 ### Get String from Code
 
@@ -79,7 +94,6 @@ Localizer.InjectAll();
 
 ## Roadmap
 
-- Image Injection
 - AudioClip Injection
 
 ## License
