@@ -2,11 +2,46 @@
 
 String Localizer for Unity
 
-WIP
+This library intends to use at small Unity project that needs to be localized to multiple languages.
 
 ## Features
 
 - Automatically inject strings to TextMesh, TextMeshPro, Text(UI) component.
 - Simple API
-- Load multi-language definition file.
+- Load multi-language definition file. (TSV)
 - Editor preview and useful warnings.
+
+## How to Use
+
+### Preparation
+
+1. Make UTF-8 TSV.
+2. Place it to streaming assets.
+
+### Automatic Injection
+
+Add **String Injector** component to your game object and enter String ID.
+
+Supported component:
+
+- TextMesh
+- Text (UI)
+- TextMeshPro
+- TextMeshProUGUI
+
+### Get String from Code
+
+```csharp
+var text = ResourceBridge.GetStringFromId("helloworld");
+```
+
+### Change Language
+
+```csharp
+ResourceBridge.ChangeLanguage("Japanese");
+```
+
+## Roadmap
+
+- Image Injection
+- AudioClip Injection
