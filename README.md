@@ -48,7 +48,33 @@ var jpText = Localizer.GetStringFromId("helloworld", "Japanese"); // ex. ハロ�
 ### Change Language
 
 ```csharp
+Localizer.ActivateNextLanguage(); // easiest way
+Localizer.ActivatePreviousLanguage();
 Localizer.ChangeLanguage("Japanese");
+```
+
+### Get Available Language List
+
+```csharp
+Localizer.LanguageList; // returns List<string>
+```
+
+### Get Current Language Name
+
+```csharp
+Localizer.CurrentLanguageName; // returns string
+```
+
+### Reload Strings from Disk
+
+```csharp
+Localizer.Load();
+```
+
+### Force Inject to All IInjectors
+
+```csharp
+Localizer.InjectAll();
 ```
 
 ## Roadmap
