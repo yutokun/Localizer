@@ -32,7 +32,8 @@ Supported component:
 ### Get String from Code
 
 ```csharp
-var text = Localizer.GetStringFromId("helloworld");
+var text = Localizer.GetStringFromId("helloworld"); // ex. Hello, World!
+var jpText = Localizer.GetStringFromId("helloworld", "Japanese"); // ex. ハローワールド
 ```
 
 ### Change Language
