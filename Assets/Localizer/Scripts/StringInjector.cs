@@ -14,6 +14,12 @@ namespace yutoVR.Localizer
 			this.AddInjector();
 		}
 
+		void Start()
+		{
+			var text = Localizer.GetStringFromId(Id);
+			Inject(text);
+		}
+
 		public void Inject(string text)
 		{
 			if (GetComponent<TextMesh>() is TextMesh textMesh)

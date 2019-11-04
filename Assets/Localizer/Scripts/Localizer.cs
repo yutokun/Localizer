@@ -16,7 +16,6 @@ namespace yutoVR.Localizer
 		static void Initialize()
 		{
 			Load();
-			InjectAll();
 		}
 
 		/// <summary>
