@@ -22,7 +22,7 @@ This library intends to use at small Unity project that needs to be localized to
 
    ![String Injector](doc/TSV.png)
 
-2. Place it to streaming assets.
+2. Place it to StreamingAssets folder with the name "**LocalizedStrings.tsv**".
 
 ### Automatic String Injection
 
