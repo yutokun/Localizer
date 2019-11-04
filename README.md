@@ -4,6 +4,8 @@
 
 This library intends to use at small Unity project that needs to be localized to multiple languages.
 
+[**Download From Here**](https://github.com/yutokun/Localizer/releases)
+
 ## Features
 
 - Automatically inject strings to TextMesh, TextMeshPro, Text(UI) component.
