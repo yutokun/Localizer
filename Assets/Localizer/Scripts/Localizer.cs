@@ -8,9 +8,9 @@ namespace yutoVR.Localizer
 	public static class Localizer
 	{
 		static readonly List<IInjector> Injectors = new List<IInjector>();
-		static List<string> LanguageList = new List<string>();
+		public static List<string> LanguageList { get; private set; } = new List<string>();
 		static readonly Dictionary<string, List<string>> LocalizedStrings = new Dictionary<string, List<string>>();
-		static string CurrentLanguageName;
+		public static string CurrentLanguageName { get; private set; }
 
 		[RuntimeInitializeOnLoadMethod]
 		static void Initialize()
@@ -59,6 +59,32 @@ namespace yutoVR.Localizer
 			CurrentLanguageName = LanguageList[languageIndex];
 		}
 
+		/// <summary>
+		/// Activate Previous Language.
+		/// </summary>
+		/// <returns>Activated language name</returns>
+		public static string ActivatePreviousLanguage()
+		{
+			var currentIndex = GetLanguageIndex(CurrentLanguageName);
+			var nextIndex = (int) Mathf.Repeat(currentIndex - 1f, LanguageList.Count);
+			ChangeLanguage(LanguageList[nextIndex]);
+			InjectAll();
+			return LanguageList[nextIndex];
+		}
+
+		/// <summary>
+		/// Activate Next Language.
+		/// </summary>
+		/// <returns>Activated language name</returns>
+		public static string ActivateNextLanguage()
+		{
+			var currentIndex = GetLanguageIndex(CurrentLanguageName);
+			var nextIndex = (int) Mathf.Repeat(currentIndex + 1f, LanguageList.Count);
+			ChangeLanguage(LanguageList[nextIndex]);
+			InjectAll();
+			return LanguageList[nextIndex];
+		}
+
 		static int GetLanguageIndex(string languageName)
 		{
 			var i = LanguageList.FindIndex(s => s.Contains(languageName));
@@ -74,7 +100,7 @@ namespace yutoVR.Localizer
 		/// <summary>
 		/// Re-inject strings to all IInjectors.
 		/// </summary>
-		static void InjectAll()
+		public static void InjectAll()
 		{
 			var index = GetLanguageIndex(CurrentLanguageName);
 			foreach (var injector in Injectors)
