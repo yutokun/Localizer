@@ -6,8 +6,7 @@ namespace yutoVR.Localizer
 {
 	public class StringInjector : MonoBehaviour, IInjector
 	{
-		[SerializeField] string stringId;
-		public string Id => stringId;
+		public string stringId;
 
 		void Awake()
 		{
@@ -21,8 +20,8 @@ namespace yutoVR.Localizer
 
 		public void Inject()
 		{
-			var text = Localizer.GetStringFromId(Id);
-			if (text == null) Debug.LogError($"String ID: {Id} is not available.");
+			var text = Localizer.GetStringFromId(stringId);
+			if (text == null) Debug.LogError($"String ID: {stringId} is not available.");
 
 			if (GetComponent<TextMesh>() is TextMesh textMesh)
 			{

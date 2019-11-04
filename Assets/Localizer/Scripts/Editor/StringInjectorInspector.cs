@@ -17,14 +17,14 @@ namespace yutoVR.Localizer
 		{
 			base.OnInspectorGUI();
 
-			if (string.IsNullOrEmpty(injector.Id))
+			if (string.IsNullOrEmpty(injector.stringId))
 			{
 				EditorGUILayout.HelpBox("Please enter a String ID.", MessageType.Info);
 				return;
 			}
 
 			Localizer.Load();
-			var dict = Localizer.GetDictionaryFromId(injector.Id);
+			var dict = Localizer.GetDictionaryFromId(injector.stringId);
 			if (dict != null)
 			{
 				var helpText = dict.Aggregate("", (current, item) => current + $"{item.Key}: {item.Value}\n");
@@ -33,7 +33,7 @@ namespace yutoVR.Localizer
 			}
 			else
 			{
-				EditorGUILayout.HelpBox($"String ID: {injector.Id} is not available.", MessageType.Error);
+				EditorGUILayout.HelpBox($"String ID: {injector.stringId} is not available.", MessageType.Error);
 			}
 		}
 	}
