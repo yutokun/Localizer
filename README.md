@@ -25,6 +25,8 @@ This library intends to use at small Unity project that needs to be localized to
 
 Add **String Injector** next to the text component and enter String ID.
 
+Localized strings will be injected when the component starts.
+
 ![String Injector](doc/StringInjector.gif)
 
 Supported component:
