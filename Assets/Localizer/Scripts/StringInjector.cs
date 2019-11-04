@@ -51,6 +51,12 @@ namespace yutoVR.Localizer
 		{
 			base.OnInspectorGUI();
 
+			if (string.IsNullOrEmpty(injector.Id))
+			{
+				EditorGUILayout.HelpBox("Please enter a String ID.", MessageType.Info);
+				return;
+			}
+
 			ResourceBridge.Load();
 			var dict = ResourceBridge.GetDictionaryFromId(injector.Id);
 			if (dict != null)
