@@ -96,6 +96,11 @@ namespace yutoVR.Localizer
 			Injectors.Add(injector);
 		}
 
+		public static void RemoveInjector(this IInjector injector)
+		{
+			Injectors.Remove(injector);
+		}
+
 		/// <summary>
 		/// Re-inject strings to all IInjectors.
 		/// </summary>

@@ -39,5 +39,10 @@ namespace yutoVR.Localizer
 				Debug.LogError("No component with replaceable text.");
 			}
 		}
+
+		void OnDestroy()
+		{
+			this.RemoveInjector();
+		}
 	}
 }
