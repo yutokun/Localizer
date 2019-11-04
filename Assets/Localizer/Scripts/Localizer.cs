@@ -11,7 +11,7 @@ namespace yutoVR.Localizer
 		public static List<string> LanguageList { get; private set; } = new List<string>();
 		static readonly Dictionary<string, List<string>> LocalizedStrings = new Dictionary<string, List<string>>();
 		public static string CurrentLanguageName { get; private set; }
-		static int CurrentLanguageIndex => GetLanguageIndex(CurrentLanguageName);
+		public static int CurrentLanguageIndex => GetLanguageIndex(CurrentLanguageName);
 
 		[RuntimeInitializeOnLoadMethod]
 		static void Initialize()
@@ -106,17 +106,7 @@ namespace yutoVR.Localizer
 		/// </summary>
 		public static void InjectAll()
 		{
-			foreach (var injector in Injectors)
-			{
-				if (LocalizedStrings.TryGetValue(injector.Id, out var strings))
-				{
-					injector.Inject(strings[CurrentLanguageIndex]);
-				}
-				else
-				{
-					Debug.LogError($"String ID: {injector.Id} is not available.");
-				}
-			}
+			foreach (var injector in Injectors) injector.Inject();
 		}
 
 		/// <summary>

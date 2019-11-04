@@ -16,12 +16,14 @@ namespace yutoVR.Localizer
 
 		void Start()
 		{
-			var text = Localizer.GetStringFromId(Id);
-			Inject(text);
+			Inject();
 		}
 
-		public void Inject(string text)
+		public void Inject()
 		{
+			var text = Localizer.GetStringFromId(Id);
+			if (text == null) Debug.LogError($"String ID: {Id} is not available.");
+
 			if (GetComponent<TextMesh>() is TextMesh textMesh)
 			{
 				textMesh.text = text;
