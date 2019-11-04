@@ -8,9 +8,9 @@ namespace yutoVR.Localizer
 	public static class ResourceBridge
 	{
 		static readonly List<IInjector> Injectors = new List<IInjector>();
-		static readonly Dictionary<string, string> CurrentLangDictionary = new Dictionary<string, string>();
-		static string LastLangName;
-		static List<List<string>> Sheet;
+		static List<string> LanguageList = new List<string>();
+		static readonly Dictionary<string, List<string>> LocalizedStrings = new Dictionary<string, List<string>>();
+		static string CurrentLanguageName; // TODO インデックス管理で良くなってきたかも
 
 		[RuntimeInitializeOnLoadMethod]
 		public static void Initialize()
@@ -22,8 +22,21 @@ namespace yutoVR.Localizer
 		public static void Load()
 		{
 			var path = Path.Combine(Application.streamingAssetsPath, "Sample.tsv"); // TODO パス良い感じに
-			Sheet = CSVParser.LoadFromPath(path, CSVParser.Delimiter.Tab);
-			ChangeLanguage(LastLangName ?? "");
+			var sheet = CSVParser.LoadFromPath(path, CSVParser.Delimiter.Tab);
+
+			LocalizedStrings.Clear();
+			for (var i = 1; i < sheet.Count; i++)
+			{
+				var id = sheet[i][0];
+				var strings = sheet[i].ToList();
+				strings.RemoveAt(0);
+				LocalizedStrings.Add(id, strings);
+			}
+
+			LanguageList = sheet[0].ToList();
+			LanguageList.RemoveAt(0);
+
+			ChangeLanguage(CurrentLanguageName ?? "");
 		}
 
 		public static void ChangeLanguage(string languageName)
@@ -34,20 +47,12 @@ namespace yutoVR.Localizer
 				languageIndex = GetLanguageIndex(languageName);
 			}
 
-			CurrentLangDictionary.Clear();
-			for (var i = 1; i < Sheet.Count; i++)
-			{
-				var key = Sheet[i][0];
-				var value = Sheet[i][languageIndex];
-				CurrentLangDictionary.Add(key, value);
-			}
-
-			LastLangName = Sheet[0][languageIndex];
+			CurrentLanguageName = LanguageList[languageIndex];
 		}
 
 		static int GetLanguageIndex(string languageName)
 		{
-			var i = Sheet[0].FindIndex(s => s.Contains(languageName));
+			var i = LanguageList.FindIndex(s => s.Contains(languageName));
 			// TODO 言語がなかった場合の処理
 			return i;
 		}
@@ -59,11 +64,12 @@ namespace yutoVR.Localizer
 
 		static void InjectAll()
 		{
+			var index = GetLanguageIndex(CurrentLanguageName);
 			foreach (var injector in Injectors)
 			{
-				if (CurrentLangDictionary.TryGetValue(injector.Id, out var text))
+				if (LocalizedStrings.TryGetValue(injector.Id, out var strings))
 				{
-					injector.Inject(text);
+					injector.Inject(strings[index]);
 				}
 				else
 				{
@@ -79,22 +85,21 @@ namespace yutoVR.Localizer
 		/// <returns>Localized String</returns>
 		public static string GetStringFromId(string id)
 		{
-			return GetStringFromId(id, LastLangName);
+			return GetStringFromId(id, CurrentLanguageName);
 		}
 
 		/// <summary>
 		/// Get localized string of specific language from String ID.
 		/// </summary>
 		/// <param name="id">String ID</param>
+		/// <param name="languageName">Language Name</param>
 		/// <returns>Localized String</returns>
 		public static string GetStringFromId(string id, string languageName)
 		{
-			var stringIndex = Sheet.FindIndex(words => words[0] == id);
-			if (stringIndex == -1) return null;
+			if (!LocalizedStrings.ContainsKey(id)) return null;
 
 			var langIndex = GetLanguageIndex(languageName);
-
-			return Sheet[stringIndex][langIndex];
+			return LocalizedStrings[id][langIndex];
 		}
 
 		/// <summary>
@@ -104,15 +109,11 @@ namespace yutoVR.Localizer
 		/// <returns>Dictionary contains localized strings</returns>
 		public static Dictionary<string, string> GetDictionaryFromId(string id)
 		{
-			var stringIndex = Sheet.FindIndex(words => words[0] == id);
-			if (stringIndex == -1) return null;
-
-			var languageList = Sheet[0].ToList();
-			languageList.RemoveAt(0);
+			if (!LocalizedStrings.ContainsKey(id)) return null;
 
 			var dict = new Dictionary<string, string>();
 
-			foreach (var language in languageList)
+			foreach (var language in LanguageList)
 			{
 				var text = GetStringFromId(id, language);
 				dict.Add(language, text);
