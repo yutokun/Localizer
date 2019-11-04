@@ -12,8 +12,6 @@ namespace yutoVR.Localizer
 
 	public class ImageInjector : MonoBehaviour, IInjector
 	{
-		// TODO Renderer の material か sharedMaterial にアクセスするのが良いな…
-
 		public ImageType imageType;
 		public string propertyName = "_MainTex";
 		public Texture2D[] texture2Ds;

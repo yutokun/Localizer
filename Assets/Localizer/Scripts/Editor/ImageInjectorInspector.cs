@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace yutoVR.Localizer
@@ -9,9 +8,14 @@ namespace yutoVR.Localizer
 	{
 		ImageInjector injector;
 
+		SerializedProperty imageType;
+		SerializedProperty propertyName;
+
 		void OnEnable()
 		{
 			injector = (ImageInjector) target;
+			imageType = serializedObject.FindProperty("imageType");
+			propertyName = serializedObject.FindProperty("propertyName");
 		}
 
 		public override void OnInspectorGUI()
@@ -19,13 +23,13 @@ namespace yutoVR.Localizer
 //			base.OnInspectorGUI();
 
 			Localizer.Load();
+			serializedObject.Update();
 
-			var imageType = (ImageType) EditorGUILayout.EnumPopup("Image Type", injector.imageType);
-			injector.imageType = imageType;
+			EditorGUILayout.PropertyField(imageType);
 
 			var langCount = Localizer.LanguageList.Count;
 
-			switch (imageType)
+			switch ((ImageType) imageType.enumValueIndex)
 			{
 				case ImageType.Texture2D:
 					UpdateTexture2DInspector(langCount);
@@ -39,11 +43,13 @@ namespace yutoVR.Localizer
 					UpdateSpriteInspector(langCount);
 					break;
 			}
+
+			serializedObject.ApplyModifiedProperties();
 		}
 
 		void UpdateTexture2DInspector(int langCount)
 		{
-			EditorGUILayout.TextField("Property Name", injector.propertyName);
+			EditorGUILayout.PropertyField(propertyName);
 
 			if (injector.texture2Ds == null)
 			{
