@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace yutoVR.Localizer
@@ -7,24 +6,29 @@ namespace yutoVR.Localizer
 	public enum ImageType
 	{
 		Texture2D,
+		Texture,
 		Sprite
 	}
 
 	public class ImageInjector : MonoBehaviour, IInjector
 	{
 		// TODO Renderer の material か sharedMaterial にアクセスするのが良いな…
-		// TODO UI もいくならどうすればいいのか。それは後にするか。
 
 		public ImageType imageType;
 		public string propertyName = "_MainTex";
 		public Texture2D[] texture2Ds;
 		public Sprite[] sprites;
+		public Texture[] textures;
 
 		void Reset()
 		{
-			if (GetComponent<Image>() is Image image)
+			if (GetComponent<Image>())
 			{
 				imageType = ImageType.Sprite;
+			}
+			else if (GetComponent<RawImage>())
+			{
+				imageType = ImageType.Texture;
 			}
 		}
 
@@ -48,6 +52,14 @@ namespace yutoVR.Localizer
 					if (GetComponent<Renderer>() is Renderer renderer)
 					{
 						renderer.material.SetTexture(propertyName, texture2Ds[index]);
+					}
+
+					break;
+
+				case ImageType.Texture:
+					if (GetComponent<RawImage>() is RawImage rawImage)
+					{
+						rawImage.texture = textures[index];
 					}
 
 					break;

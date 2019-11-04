@@ -31,6 +31,10 @@ namespace yutoVR.Localizer
 					UpdateTexture2DInspector(langCount);
 					break;
 
+				case ImageType.Texture:
+					UpdateTextureInspector(langCount);
+					break;
+
 				case ImageType.Sprite:
 					UpdateSpriteInspector(langCount);
 					break;
@@ -59,6 +63,29 @@ namespace yutoVR.Localizer
 			{
 				var tex = EditorGUILayout.ObjectField(Localizer.LanguageList[i], injector.texture2Ds[i], typeof(Texture2D), false) as Texture2D;
 				injector.texture2Ds[i] = tex;
+			}
+		}
+
+		void UpdateTextureInspector(int langCount)
+		{
+			if (injector.textures == null)
+			{
+				injector.textures = new Texture[langCount];
+			}
+			else if (injector.textures.Length != langCount)
+			{
+				var oldTextures = injector.textures;
+				injector.textures = new Texture[langCount];
+				for (var i = 0; i < langCount; i++)
+				{
+					injector.textures[i] = oldTextures[i];
+				}
+			}
+
+			for (var i = 0; i < langCount; i++)
+			{
+				var tex = EditorGUILayout.ObjectField(Localizer.LanguageList[i], injector.textures[i], typeof(Texture), false) as Texture;
+				injector.textures[i] = tex;
 			}
 		}
 
