@@ -57,8 +57,8 @@ namespace yutoVR.Localizer
 				return;
 			}
 
-			ResourceBridge.Load();
-			var dict = ResourceBridge.GetDictionaryFromId(injector.Id);
+			Localizer.Load();
+			var dict = Localizer.GetDictionaryFromId(injector.Id);
 			if (dict != null)
 			{
 				var helpText = dict.Aggregate("", (current, item) => current + $"{item.Key}: {item.Value}\n");

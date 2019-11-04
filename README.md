@@ -1,6 +1,6 @@
 # Localizer
 
-String Localizer for Unity
+Localizer for Unity
 
 This library intends to use at small Unity project that needs to be localized to multiple languages.
 
@@ -32,13 +32,13 @@ Supported component:
 ### Get String from Code
 
 ```csharp
-var text = ResourceBridge.GetStringFromId("helloworld");
+var text = Localizer.GetStringFromId("helloworld");
 ```
 
 ### Change Language
 
 ```csharp
-ResourceBridge.ChangeLanguage("Japanese");
+Localizer.ChangeLanguage("Japanese");
 ```
 
 ## Roadmap
