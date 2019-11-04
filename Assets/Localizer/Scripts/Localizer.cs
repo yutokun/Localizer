@@ -32,7 +32,9 @@ namespace yutoVR.Localizer
 				var id = sheet[i][0];
 				var strings = sheet[i].ToList();
 				strings.RemoveAt(0);
-				strings = strings.Select(s => s.Replace("\\n", "\n")).ToList();
+				strings = strings.Select(s => s.Replace("\\n", "\n"))
+				                 .Select(s => s.Replace("\r", ""))
+				                 .ToList();
 				LocalizedStrings.Add(id, strings);
 			}
 
