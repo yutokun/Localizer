@@ -51,3 +51,7 @@ Localizer.ChangeLanguage("Japanese");
 
 - Image Injection
 - AudioClip Injection
+
+## License
+
+[MIT License](LICENSE)
