@@ -133,8 +133,9 @@ namespace yutoVR.Localizer
 		public static string GetStringFromId(string id, string languageName)
 		{
 			if (!LocalizedStrings.ContainsKey(id)) return null;
+			var languageIndex = GetLanguageIndex(languageName);
 
-			return LocalizedStrings[id][CurrentLanguageIndex];
+			return LocalizedStrings[id][languageIndex];
 		}
 
 		/// <summary>
