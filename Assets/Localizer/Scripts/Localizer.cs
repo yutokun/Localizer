@@ -13,7 +13,7 @@ namespace yutoVR.Localizer
 		public static string CurrentLanguageName { get; private set; }
 		public static int CurrentLanguageIndex => GetLanguageIndex(CurrentLanguageName);
 
-		[RuntimeInitializeOnLoadMethod]
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		static void Initialize()
 		{
 			Load();
