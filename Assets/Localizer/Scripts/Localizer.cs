@@ -39,7 +39,7 @@ namespace yutoVR.Localizer
 				LocalizedStrings.Add(id, strings);
 			}
 
-			LanguageList = sheet[0].ToList();
+			LanguageList = sheet[0].Select(s => s.Replace("\r", "")).ToList();
 			LanguageList.RemoveAt(0);
 
 			ChangeLanguage(CurrentLanguageName ?? "");
