@@ -44,6 +44,7 @@ Thumbs.db
 *.DotSettings
 *.apk
 *.mp4
+Assets/AssetStoreTools*
 
 *.log #log files, for some plugins
 *.pyc #python bytecode cache, for some plugins.
