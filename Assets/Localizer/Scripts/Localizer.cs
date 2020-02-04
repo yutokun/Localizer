@@ -66,7 +66,7 @@ namespace yutoVR.Localizer
 		/// <returns>Activated language name</returns>
 		public static string ActivatePreviousLanguage()
 		{
-			var prevIndex = (int) Mathf.Repeat(CurrentLanguageIndex - 1, LanguageList.Count);
+			var prevIndex = (int)Mathf.Repeat(CurrentLanguageIndex - 1, LanguageList.Count);
 			ChangeLanguage(LanguageList[prevIndex]);
 			InjectAll();
 			return LanguageList[prevIndex];
@@ -78,7 +78,7 @@ namespace yutoVR.Localizer
 		/// <returns>Activated language name</returns>
 		public static string ActivateNextLanguage()
 		{
-			var nextIndex = (int) Mathf.Repeat(CurrentLanguageIndex + 1, LanguageList.Count);
+			var nextIndex = (int)Mathf.Repeat(CurrentLanguageIndex + 1, LanguageList.Count);
 			ChangeLanguage(LanguageList[nextIndex]);
 			InjectAll();
 			return LanguageList[nextIndex];

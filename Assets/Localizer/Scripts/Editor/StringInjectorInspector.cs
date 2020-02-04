@@ -10,7 +10,7 @@ namespace yutoVR.Localizer
 
 		void OnEnable()
 		{
-			injector = (StringInjector) target;
+			injector = (StringInjector)target;
 		}
 
 		public override void OnInspectorGUI()

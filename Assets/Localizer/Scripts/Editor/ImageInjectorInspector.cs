@@ -6,14 +6,13 @@ namespace yutoVR.Localizer
 	[CustomEditor(typeof(ImageInjector))]
 	public class ImageInjectorInspector : Editor
 	{
-		ImageInjector injector;
-
 		SerializedProperty imageType;
+		ImageInjector injector;
 		SerializedProperty propertyName;
 
 		void OnEnable()
 		{
-			injector = (ImageInjector) target;
+			injector = (ImageInjector)target;
 			imageType = serializedObject.FindProperty("imageType");
 			propertyName = serializedObject.FindProperty("propertyName");
 		}
@@ -27,7 +26,7 @@ namespace yutoVR.Localizer
 
 			var langCount = Localizer.LanguageList.Count;
 
-			switch ((ImageType) imageType.enumValueIndex)
+			switch ((ImageType)imageType.enumValueIndex)
 			{
 				case ImageType.Texture2D:
 					UpdateTexture2DInspector(langCount);
