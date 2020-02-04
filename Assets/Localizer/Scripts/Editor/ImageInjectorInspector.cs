@@ -25,8 +25,6 @@ namespace yutoVR.Localizer
 			Localizer.Load();
 			serializedObject.Update();
 
-			EditorGUILayout.PropertyField(imageType);
-
 			var langCount = Localizer.LanguageList.Count;
 
 			switch ((ImageType) imageType.enumValueIndex)
