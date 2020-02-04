@@ -47,27 +47,15 @@ namespace yutoVR.Localizer
 			switch (imageType)
 			{
 				case ImageType.Texture2D:
-					if (GetComponent<Renderer>() is Renderer renderer)
-					{
-						renderer.material.SetTexture(propertyName, texture2Ds[index]);
-					}
-
+					GetComponent<Renderer>().material.SetTexture(propertyName, texture2Ds[index]);
 					break;
 
 				case ImageType.Texture:
-					if (GetComponent<RawImage>() is RawImage rawImage)
-					{
-						rawImage.texture = textures[index];
-					}
-
+					GetComponent<RawImage>().texture = textures[index];
 					break;
 
 				case ImageType.Sprite:
-					if (GetComponent<Image>() is Image image)
-					{
-						image.sprite = sprites[index];
-					}
-
+					GetComponent<Image>().sprite = sprites[index];
 					break;
 			}
 		}
