@@ -12,7 +12,7 @@ namespace yutoVR.Localizer
 			if (File.Exists(SettingsPath))
 			{
 				var languageName = File.ReadAllText(SettingsPath);
-				Localizer.ChangeLanguage(languageName);
+				Localizer.CurrentLanguageName = languageName;
 			}
 		}
 
