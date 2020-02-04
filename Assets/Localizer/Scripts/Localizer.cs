@@ -42,6 +42,7 @@ namespace yutoVR.Localizer
 			LanguageList = sheet[0].Select(s => s.Replace("\r", "")).ToList();
 			LanguageList.RemoveAt(0);
 
+			Settings.LoadLanguageSettings();
 			ChangeLanguage(CurrentLanguageName ?? "");
 		}
 
@@ -58,6 +59,7 @@ namespace yutoVR.Localizer
 			}
 
 			CurrentLanguageName = LanguageList[languageIndex];
+			Settings.SaveLanguageSettings();
 		}
 
 		/// <summary>
