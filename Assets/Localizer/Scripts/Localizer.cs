@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -32,6 +33,7 @@ namespace yutoVR.Localizer
 			{
 				var id = sheet[i][0];
 				if (string.IsNullOrEmpty(id)) continue;
+				if (LocalizedStrings.ContainsKey(id)) throw new Exception($"<b>[Localizer]</b> String ID \"<b>{id}</b>\" is duplicated. Please check your localization sheet.");
 
 				var strings = sheet[i].ToList();
 				strings.RemoveAt(0);
