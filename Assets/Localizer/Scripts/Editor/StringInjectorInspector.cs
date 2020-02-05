@@ -61,9 +61,14 @@ namespace yutoVR.Localizer
 			if (noSuggestion || exactMatch) return;
 
 			var text = suggestions.Take(limit)
-			                      .Aggregate("\n<b>ID Suggest</b>\n", (current, item) => $"{current}\n- {item}");
+			                      .Aggregate("\n<b>ID Suggest</b>\n", (current, item) => $"{current}\n- {GetMarkedIdRepresentation(item)}");
 			text += string.IsNullOrEmpty(postfix) ? "" : postfix;
 			EditorGUILayout.HelpBox($"{text}\n", MessageType.Info);
+
+			string GetMarkedIdRepresentation(string id)
+			{
+				return $"<color=green>{id.Insert(injector.stringId.Length, "</color>")}";
+			}
 		}
 	}
 }
