@@ -31,6 +31,8 @@ namespace yutoVR.Localizer
 			for (var i = 1; i < sheet.Count; i++)
 			{
 				var id = sheet[i][0];
+				if (string.IsNullOrEmpty(id)) continue;
+
 				var strings = sheet[i].ToList();
 				strings.RemoveAt(0);
 				strings = strings.Select(s => s.Replace("\\n", "\n"))
