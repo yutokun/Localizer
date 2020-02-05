@@ -154,5 +154,10 @@ namespace yutoVR.Localizer
 
 			return dict;
 		}
+
+		internal static List<string> GetAllIds()
+		{
+			return LocalizedStrings.Keys.ToList();
+		}
 	}
 }
