@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -55,9 +54,11 @@ namespace yutoVR.Localizer
 			ShowSuggestion(suggestions);
 		}
 
-		static void ShowSuggestion(IReadOnlyCollection<string> suggestions, int limit = int.MaxValue, string postfix = "")
+		void ShowSuggestion(IReadOnlyCollection<string> suggestions, int limit = int.MaxValue, string postfix = "")
 		{
-			if (suggestions.Count <= 1) return;
+			var noSuggestion = suggestions.Count == 0;
+			var exactMatch = suggestions.Count == 1 && suggestions.First() == injector.stringId;
+			if (noSuggestion || exactMatch) return;
 
 			var text = suggestions.Take(limit)
 			                      .Aggregate("\n<b>ID Suggest</b>\n", (current, item) => $"{current}\n- {item}");
