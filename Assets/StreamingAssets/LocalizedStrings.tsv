@@ -3,3 +3,5 @@ test	テスト	Test
 helloworld	ハローワールド	Hello, World!
 return	改行\nあり	You can\nreturn
 explanation	このサンプルでは、Enter キーで言語を切り替えられます。	You can cycle languages with return key in this sample.
+youCanUse	使えます	You can use
+youCanUseManyIds	たくさんの ID を使えます	You can use many IDs.
