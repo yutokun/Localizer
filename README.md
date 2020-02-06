@@ -26,7 +26,7 @@ This library intends to use at small Unity project that needs to be localized to
 
 ### Automatic String Injection
 
-Add **String Injector** next to the text component and enter String ID.
+Add **String Injector** next to the text component and enter String ID. It suggest candidate IDs as you type.
 
 Localized strings will be injected when the component starts.
 
