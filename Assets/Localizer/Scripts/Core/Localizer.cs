@@ -8,7 +8,7 @@ namespace yutoVR.Localizer
 {
 	public static class Localizer
 	{
-		static readonly List<InjectorBase> Injectors = new List<InjectorBase>();
+		static readonly List<LocalizerBase> Localizers = new List<LocalizerBase>();
 		public static List<string> LanguageList { get; private set; } = new List<string>();
 		static readonly Dictionary<string, List<string>> LocalizedStrings = new Dictionary<string, List<string>>();
 		public static string CurrentLanguageName { get; internal set; }
@@ -33,7 +33,7 @@ namespace yutoVR.Localizer
 			{
 				var id = sheet[i][0];
 				if (string.IsNullOrEmpty(id)) continue;
-				if (LocalizedStrings.ContainsKey(id)) throw new Exception($"<b>[Localizer]</b> String ID \"<b>{id}</b>\" is duplicated. Please check your localization sheet.");
+				if (LocalizedStrings.ContainsKey(id)) throw new Exception($"<b>[Localizer]</b> Text ID \"<b>{id}</b>\" is duplicated. Please check your localization sheet.");
 
 				var strings = sheet[i].ToList();
 				strings.RemoveAt(0);
@@ -97,14 +97,14 @@ namespace yutoVR.Localizer
 			return i;
 		}
 
-		public static void AddInjector(this InjectorBase injector)
+		public static void AddLocalizer(this LocalizerBase localizer)
 		{
-			Injectors.Add(injector);
+			Localizers.Add(localizer);
 		}
 
-		public static void RemoveInjector(this InjectorBase injector)
+		public static void RemoveLocalizer(this LocalizerBase localizer)
 		{
-			Injectors.Remove(injector);
+			Localizers.Remove(localizer);
 		}
 
 		/// <summary>
@@ -112,26 +112,26 @@ namespace yutoVR.Localizer
 		/// </summary>
 		public static void InjectAll()
 		{
-			foreach (var injector in Injectors) injector.Inject();
+			foreach (var localizer in Localizers) localizer.Localize();
 		}
 
 		/// <summary>
-		/// Get localized string from String ID.
+		/// Get localized string from Text ID.
 		/// </summary>
-		/// <param name="id">String ID</param>
-		/// <returns>Localized String</returns>
-		public static string GetStringFromId(string id)
+		/// <param name="id">Text ID</param>
+		/// <returns>Localized Text</returns>
+		public static string GetTextFromId(string id)
 		{
-			return GetStringFromId(id, CurrentLanguageName);
+			return GetTextFromId(id, CurrentLanguageName);
 		}
 
 		/// <summary>
-		/// Get localized string of specific language from String ID.
+		/// Get localized string of specific language from Text ID.
 		/// </summary>
-		/// <param name="id">String ID</param>
+		/// <param name="id">Text ID</param>
 		/// <param name="languageName">Language Name</param>
-		/// <returns>Localized String</returns>
-		public static string GetStringFromId(string id, string languageName)
+		/// <returns>Localized Text</returns>
+		public static string GetTextFromId(string id, string languageName)
 		{
 			if (!LocalizedStrings.ContainsKey(id)) return null;
 			var languageIndex = GetLanguageIndex(languageName);
@@ -142,7 +142,7 @@ namespace yutoVR.Localizer
 		/// <summary>
 		/// Get dictionary contains string of all language for specific ID.
 		/// </summary>
-		/// <param name="id">String ID</param>
+		/// <param name="id">Text ID</param>
 		/// <returns>Dictionary contains localized strings</returns>
 		public static Dictionary<string, string> GetDictionaryFromId(string id)
 		{
@@ -152,7 +152,7 @@ namespace yutoVR.Localizer
 
 			foreach (var language in LanguageList)
 			{
-				var text = GetStringFromId(id, language);
+				var text = GetTextFromId(id, language);
 				dict.Add(language, text);
 			}
 

@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace yutoVR.Localizer
 {
-	[CustomEditor(typeof(StringInjector))]
-	public class StringInjectorInspector : Editor
+	[CustomEditor(typeof(TextLocalizer))]
+	public class TextLocalizerInspector : Editor
 	{
-		StringInjector injector;
+		TextLocalizer localizer;
 
 		void OnEnable()
 		{
-			injector = (StringInjector)target;
+			localizer = (TextLocalizer)target;
 		}
 
 		public override void OnInspectorGUI()
@@ -29,16 +29,16 @@ namespace yutoVR.Localizer
 				return;
 			}
 
-			if (string.IsNullOrEmpty(injector.stringId))
+			if (string.IsNullOrEmpty(localizer.textId))
 			{
-				EditorGUILayout.HelpBox($"Please enter a String ID.", MessageType.Info);
+				EditorGUILayout.HelpBox($"Please enter a Text ID.", MessageType.Info);
 
 				var postfix = keys.Count > 5 ? $"\n\n<i>and more (a total of {keys.Count.ToString()} IDs)</i>" : "";
 				ShowSuggestion(keys.ToList(), 5, postfix);
 				return;
 			}
 
-			var dict = Localizer.GetDictionaryFromId(injector.stringId);
+			var dict = Localizer.GetDictionaryFromId(localizer.textId);
 			if (dict != null)
 			{
 				var helpText = dict.Aggregate("", (current, item) => current + $"{item.Key}: {item.Value}\n");
@@ -47,17 +47,17 @@ namespace yutoVR.Localizer
 			}
 			else
 			{
-				EditorGUILayout.HelpBox($"String ID: {injector.stringId} is not available.", MessageType.Error);
+				EditorGUILayout.HelpBox($"Text ID: {localizer.textId} is not available.", MessageType.Error);
 			}
 
-			var suggestions = keys.Where(key => key.StartsWith(injector.stringId)).ToList();
+			var suggestions = keys.Where(key => key.StartsWith(localizer.textId)).ToList();
 			ShowSuggestion(suggestions);
 		}
 
 		void ShowSuggestion(IReadOnlyCollection<string> suggestions, int limit = int.MaxValue, string postfix = "")
 		{
 			var noSuggestion = suggestions.Count == 0;
-			var exactMatch = suggestions.Count == 1 && suggestions.First() == injector.stringId;
+			var exactMatch = suggestions.Count == 1 && suggestions.First() == localizer.textId;
 			if (noSuggestion || exactMatch) return;
 
 			var text = suggestions.Take(limit)
@@ -67,7 +67,7 @@ namespace yutoVR.Localizer
 
 			string GetMarkedIdRepresentation(string id)
 			{
-				return $"<color=green>{id.Insert(injector.stringId.Length, "</color>")}";
+				return $"<color=green>{id.Insert(localizer.textId.Length, "</color>")}";
 			}
 		}
 	}
