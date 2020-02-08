@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
-using yutoVR.Localizer;
 
-public class LanguageCycler : MonoBehaviour
+namespace yutoVR.Localizer.Demo
 {
-	void Update()
+	public class LanguageCycler : MonoBehaviour
 	{
-		if (Input.GetKeyDown(KeyCode.Return))
+		void Update()
 		{
-			Localizer.ActivateNextLanguage();
+			if (Input.GetKeyDown(KeyCode.Return))
+			{
+				Localizer.ActivateNextLanguage();
+			}
 		}
 	}
 }
