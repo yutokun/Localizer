@@ -26,7 +26,7 @@ namespace yutoVR.Localizer
 		public static void Load()
 		{
 			var path = Path.Combine(Application.streamingAssetsPath, "LocalizedStrings.tsv");
-			var sheet = CSVParser.LoadFromPath(path, CSVParser.Delimiter.Tab);
+			var sheet = SheetParser.LoadFromPath(path, SheetParser.Delimiter.Tab);
 
 			LocalizedStrings.Clear();
 			for (var i = 1; i < sheet.Count; i++)
