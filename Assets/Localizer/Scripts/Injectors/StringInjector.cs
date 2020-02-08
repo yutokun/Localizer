@@ -11,7 +11,7 @@ namespace yutoVR.Localizer
 		TextMeshPro
 	}
 
-	public class StringInjector : MonoBehaviour, IInjector
+	public class StringInjector : InjectorBase
 	{
 		[HideInInspector] public StringType stringType;
 		public string stringId;
@@ -32,17 +32,7 @@ namespace yutoVR.Localizer
 			}
 		}
 
-		void Awake()
-		{
-			this.AddInjector();
-		}
-
-		void Start()
-		{
-			Inject();
-		}
-
-		public void Inject()
+		public override void Inject()
 		{
 			var text = Localizer.GetStringFromId(stringId);
 			if (text == null) Debug.LogError($"String ID: {stringId} is not available.");
@@ -61,11 +51,6 @@ namespace yutoVR.Localizer
 					GetComponent<TMP_Text>().text = text;
 					break;
 			}
-		}
-
-		void OnDestroy()
-		{
-			this.RemoveInjector();
 		}
 	}
 }

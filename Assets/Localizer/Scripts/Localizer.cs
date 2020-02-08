@@ -8,7 +8,7 @@ namespace yutoVR.Localizer
 {
 	public static class Localizer
 	{
-		static readonly List<IInjector> Injectors = new List<IInjector>();
+		static readonly List<InjectorBase> Injectors = new List<InjectorBase>();
 		public static List<string> LanguageList { get; private set; } = new List<string>();
 		static readonly Dictionary<string, List<string>> LocalizedStrings = new Dictionary<string, List<string>>();
 		public static string CurrentLanguageName { get; internal set; }
@@ -97,12 +97,12 @@ namespace yutoVR.Localizer
 			return i;
 		}
 
-		public static void AddInjector(this IInjector injector)
+		public static void AddInjector(this InjectorBase injector)
 		{
 			Injectors.Add(injector);
 		}
 
-		public static void RemoveInjector(this IInjector injector)
+		public static void RemoveInjector(this InjectorBase injector)
 		{
 			Injectors.Remove(injector);
 		}

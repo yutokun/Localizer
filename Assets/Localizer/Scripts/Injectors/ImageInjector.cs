@@ -10,7 +10,7 @@ namespace yutoVR.Localizer
 		Sprite
 	}
 
-	public class ImageInjector : MonoBehaviour, IInjector
+	public class ImageInjector : InjectorBase
 	{
 		[HideInInspector] public ImageType imageType;
 		public string propertyName = "_MainTex";
@@ -30,17 +30,7 @@ namespace yutoVR.Localizer
 			}
 		}
 
-		void Awake()
-		{
-			this.AddInjector();
-		}
-
-		void Start()
-		{
-			Inject();
-		}
-
-		public void Inject()
+		public override void Inject()
 		{
 			var index = Localizer.CurrentLanguageIndex;
 
@@ -58,11 +48,6 @@ namespace yutoVR.Localizer
 					GetComponent<Image>().sprite = sprites[index];
 					break;
 			}
-		}
-
-		void OnDestroy()
-		{
-			this.RemoveInjector();
 		}
 	}
 }
