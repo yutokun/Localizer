@@ -25,7 +25,7 @@ namespace yutoVR.Localizer
 		/// <summary>
 		/// Localize target component.
 		/// </summary>
-		public abstract void Localize();
+		internal abstract void Localize();
 
 		protected virtual void OnDestroy()
 		{

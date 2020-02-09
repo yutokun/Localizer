@@ -27,7 +27,7 @@ namespace yutoVR.Localizer
 			}
 		}
 
-		public override void Localize()
+		internal override void Localize()
 		{
 			var text = Localizer.GetTextFromId(textId);
 			if (text == null) Debug.LogError($"Text ID: {textId} is not available.");
