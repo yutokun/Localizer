@@ -67,7 +67,14 @@ namespace yutoVR.Localizer
 
 			string GetMarkedIdRepresentation(string id)
 			{
-				return $"<color=green>{id.Insert(localizer.textId.Length, "</color>")}";
+				if (string.IsNullOrEmpty(localizer.textId))
+				{
+					return id;
+				}
+				else
+				{
+					return $"<color=green>{id.Insert(localizer.textId.Length, "</color>")}";
+				}
 			}
 		}
 	}
