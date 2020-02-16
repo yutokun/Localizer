@@ -7,14 +7,12 @@ namespace yutoVR.Localizer
 	[CustomEditor(typeof(ImageLocalizer))]
 	public class ImageLocalizerInspector : Editor
 	{
-		SerializedProperty imageType;
 		ImageLocalizer localizer;
 		SerializedProperty propertyName;
 
 		void OnEnable()
 		{
 			localizer = (ImageLocalizer)target;
-			imageType = serializedObject.FindProperty("imageType");
 			propertyName = serializedObject.FindProperty("propertyName");
 		}
 
