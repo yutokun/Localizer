@@ -5,6 +5,7 @@ namespace yutoVR.Localizer
 	public class AudioLocalizer : LocalizerBase
 	{
 		public AudioClip[] clips;
+		public bool playFromSamePositionWhenInject;
 
 		protected override void Prepare()
 		{
@@ -20,7 +21,7 @@ namespace yutoVR.Localizer
 		internal override void Localize()
 		{
 			var index = Localizer.CurrentLanguageIndex;
-			injector.Inject(index, this);
+			injector.Inject(clips[index], this);
 		}
 	}
 }

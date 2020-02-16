@@ -7,10 +7,12 @@ namespace yutoVR.Localizer
 	public class AudioLocalizerInspector : Editor
 	{
 		AudioLocalizer localizer;
+		SerializedProperty playFromSamePositionWhenInject;
 
 		void OnEnable()
 		{
 			localizer = (AudioLocalizer)target;
+			playFromSamePositionWhenInject = serializedObject.FindProperty("playFromSamePositionWhenInject");
 		}
 
 		public override void OnInspectorGUI()
@@ -19,6 +21,8 @@ namespace yutoVR.Localizer
 
 			Localizer.Load();
 			serializedObject.Update();
+
+			EditorGUILayout.PropertyField(playFromSamePositionWhenInject, new GUIContent("Play From Same Position"));
 
 			var langCount = Localizer.LanguageList.Count;
 
