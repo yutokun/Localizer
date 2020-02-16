@@ -4,7 +4,7 @@
 
 This library intends to use at small Unity project that needs to be localized to multiple languages.
 
-[**Download From Here**](https://github.com/yutokun/Localizer/releases)
+[**Download From Here**](https://github.com/yutokun/Localizer/releases) or if you would like, buy it at Asset Store! (currently in review)
 
 ## Features
 
@@ -26,7 +26,7 @@ This library intends to use at small Unity project that needs to be localized to
 
 ### Automatic String Injection
 
-Add **String Injector** next to the text component and enter String ID. It suggest candidate IDs as you type.
+Add **String Localizer** next to the supported component and enter String ID. It suggest candidate IDs as you type.
 
 Localized strings will be injected when the component starts.
 
@@ -41,7 +41,7 @@ Supported component:
 
 ### Automatic Image Injection
 
-Add **Image Injector** next to the game object and set images.
+Add **Image Localizer** next to the supported component and set images.
 
 Localized images will be injected when the component starts.
 
@@ -52,6 +52,18 @@ Supported component:
 - Renderer
 - Image
 - RawImage
+
+### Automatic Audio Injection
+
+Add **Audio Localizer** next to the supported component and set AudioClips.
+
+Localized audio will be injected when the components starts.
+
+![Audio Localizer](doc/AudioLocalizer.png)
+
+Supported component:
+
+- AudioSource
 
 ### Get String from Code
 
@@ -91,10 +103,6 @@ Localizer.Load();
 ```csharp
 Localizer.InjectAll();
 ```
-
-## Roadmap
-
-- AudioClip Injection
 
 ## License
 
