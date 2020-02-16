@@ -2,6 +2,6 @@
 {
 	public interface IInjector
 	{
-		void Inject<T>(T localizedData);
+		void Inject<T1, T2>(T1 localizedData, T2 localizer) where T2 : LocalizerBase;
 	}
 }

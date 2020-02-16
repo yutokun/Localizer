@@ -11,7 +11,7 @@ namespace yutoVR.Localizer
 			this.tmp = tmp;
 		}
 
-		public void Inject<T>(T localizedData)
+		public void Inject<T1, T2>(T1 localizedData, T2 localizer) where T2 : LocalizerBase
 		{
 			tmp.text = localizedData as string;
 		}

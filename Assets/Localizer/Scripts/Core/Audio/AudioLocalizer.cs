@@ -20,7 +20,7 @@ namespace yutoVR.Localizer
 		internal override void Localize()
 		{
 			var index = Localizer.CurrentLanguageIndex;
-			injector.Inject(index);
+			injector.Inject(index, this);
 		}
 	}
 }

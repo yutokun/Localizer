@@ -32,7 +32,7 @@ namespace yutoVR.Localizer
 			var text = Localizer.GetTextFromId(textId);
 			if (text == null) Debug.LogError($"Text ID: {textId} is not available.");
 
-			injector.Inject(text);
+			injector.Inject(text, this);
 		}
 	}
 }

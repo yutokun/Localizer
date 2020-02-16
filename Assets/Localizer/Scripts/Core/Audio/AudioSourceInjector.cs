@@ -11,7 +11,7 @@ namespace yutoVR.Localizer
 			this.audio = audio;
 		}
 
-		public void Inject<T>(T localizedData)
+		public void Inject<T1, T2>(T1 localizedData, T2 localizer) where T2 : LocalizerBase
 		{
 			audio.clip = localizedData as AudioClip;
 		}
