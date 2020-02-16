@@ -8,8 +8,13 @@ namespace yutoVR.Localizer.Demo
 		{
 			if (Input.GetKeyDown(KeyCode.Return))
 			{
-				Localizer.ActivateNextLanguage();
+				Cycle();
 			}
+		}
+
+		public void Cycle()
+		{
+			Localizer.ActivateNextLanguage();
 		}
 	}
 }
