@@ -10,7 +10,12 @@ namespace yutoVR.Localizer
 			public string currentLanguageName;
 		}
 
+#if UNITY_EDITOR
 		static string SettingsDirectory => Path.Combine(Directory.GetCurrentDirectory(), "Localizer");
+#elif UNITY_STANDALONE
+		static string SettingsDirectory => Path.Combine(Application.dataPath, "Localizer");
+#endif
+
 		static string SettingsPath => Path.Combine(SettingsDirectory, "Settings.json");
 
 		public static void LoadLanguageSettings()
