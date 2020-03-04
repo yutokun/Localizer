@@ -104,6 +104,20 @@ Localizer.Load();
 Localizer.InjectAll();
 ```
 
-## License
+## Licenses
+
+### create-unitypackage
+
+Copyright (c) 2020 pCYSl5EDgo
+
+[MIT license](https://github.com/pCYSl5EDgo/create-unitypackage/blob/master/LICENSE)
+
+### action-gh-release
+
+Copyright (c) 2019 Doug Tangren
+
+[MIT license](https://github.com/softprops/action-gh-release/blob/master/LICENSE)
+
+### This Repo
 
 [MIT License](LICENSE)
