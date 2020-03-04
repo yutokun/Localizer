@@ -1,0 +1,52 @@
+name: Create GitHub Releases
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Listing files to package
+      run: |
+       echo "Assets/Localizer.meta" > metaList
+       find Assets/Localizer/ -name \*.meta >> metaList
+       
+    - name: Load Release Informations
+      run: |
+        echo "::set-env name=FILENAME::Localizer-${GITHUB_REF#refs/tags/}.unitypackage"
+        echo "::set-env name=TITLE::`cat github-releases/title.txt`"
+
+    - name: Create .unitypackage
+      uses: pCYSl5EDgo/create-unitypackage@v1
+      with:
+        # Output unitypackage file path
+       package-path: ${{ env.FILENAME }}
+        # Relative file paths from project-folder. Multi-line string value. Each line should ends with .meta.
+       include-files: metaList
+        # Unity project folder. Default => ./
+        # Project-folder: # optional
+
+    - name: Create a GitHub Release
+      uses: softprops/action-gh-release@v0.1.5
+      with:
+        # Note-worthy description of changes in release
+#         body: # optional
+        # Path to load note-worthy description of changes in release from
+        body_path: github-releases/body.md
+        # Gives the release a custom name. Defaults to tag name
+        name: ${{ env.TITLE }}
+        # Creates a draft release. Defaults to false
+        draft: false
+        # Identify the release as a prerelease. Defaults to false
+        prerelease: false
+        # Newline-delimited list of path globs for asset files to upload
+        files: ${{ env.FILENAME }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
