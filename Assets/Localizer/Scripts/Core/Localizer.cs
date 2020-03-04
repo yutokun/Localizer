@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -25,8 +24,7 @@ namespace yutoVR.Localizer
 		/// </summary>
 		public static void Load()
 		{
-			var path = Path.Combine(Application.streamingAssetsPath, "LocalizedStrings.tsv");
-			var sheet = SheetParser.LoadFromPath(path, SheetParser.Delimiter.Tab);
+			var sheet = SheetParser.LoadFromPath(PathProvider.SheetPath, SheetParser.Delimiter.Tab);
 
 			LocalizedStrings.Clear();
 			for (var i = 1; i < sheet.Count; i++)
