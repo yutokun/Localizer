@@ -4,7 +4,7 @@ using UnityEditor.Callbacks;
 
 namespace yutoVR.Localizer
 {
-	public class BuildPostProcess
+	public class PostProcessBuild
 	{
 		[PostProcessBuild]
 		public static void OnPostProcessBuild(BuildTarget target, string pathToBuiltProject)
