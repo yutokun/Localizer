@@ -2,6 +2,8 @@
   <img width="480" src="doc/Logo.png">
 </h1>
 
+[![Create GitHub Releases](https://github.com/yutokun/Localizer/workflows/Create%20GitHub%20Releases/badge.svg)](https://github.com/yutokun/Localizer/actions?query=workflow%3A"Create+GitHub+Releases")
+
 This library intends to use at small Unity project that needs to be localized to multiple languages.
 
 [**Download From Here**](https://github.com/yutokun/Localizer/releases) or if you would like, buy it at Asset Store! (currently in review)
