@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ScaleRandomizer : MonoBehaviour
+namespace yutoVR.Localizer.Demo
 {
-	[SerializeField] float minScale, maxScale, interval;
-	float elapsedTime;
-	Vector3 targetScale;
-
-	void Update()
+	public class ScaleRandomizer : MonoBehaviour
 	{
-		elapsedTime += Time.deltaTime;
+		[SerializeField] float minScale, maxScale, interval;
+		float elapsedTime;
+		Vector3 targetScale;
 
-		if (elapsedTime > interval)
+		void Update()
 		{
-			elapsedTime = 0f;
-			targetScale = Random.Range(minScale, maxScale) * Vector3.one;
-		}
+			elapsedTime += Time.deltaTime;
 
-		transform.localScale = Vector3.Lerp(transform.localScale, targetScale, 0.5f);
+			if (elapsedTime > interval)
+			{
+				elapsedTime = 0f;
+				targetScale = Random.Range(minScale, maxScale) * Vector3.one;
+			}
+
+			transform.localScale = Vector3.Lerp(transform.localScale, targetScale, 0.5f);
+		}
 	}
 }
