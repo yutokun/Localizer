@@ -34,6 +34,8 @@ namespace yutoVR.Localizer
 
 		public bool ChangeID(string textId)
 		{
+			if (string.IsNullOrEmpty(textId)) return false;
+
 			if (!Localizer.Has(textId))
 			{
 				Debug.LogError($"Text ID: {textId} is not available.");
