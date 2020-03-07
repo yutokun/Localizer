@@ -193,7 +193,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 1
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 1
@@ -19691,12 +19691,12 @@ TextMesh:
   m_GameObject: {fileID: 2083725604}
   m_Text: "\u706B\u306F\u3001\u53E4\u6765\u3088\u308A\u4EBA\u3092\u5B88\u308A\u3001\n\u6075\u307F\u3092\u4E0E\u3048\u3001\u6642\u306B\u7259\u3092\u5265\u304D\u307E\u3057\u305F\u3002"
   m_OffsetZ: 0
-  m_CharacterSize: 0.1
+  m_CharacterSize: 0.01
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 31
+  m_FontSize: 310
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
