@@ -29,10 +29,21 @@ namespace yutoVR.Localizer
 
 		internal override void Localize()
 		{
-			var text = Localizer.GetTextFromId(textId);
-			if (text == null) Debug.LogError($"Text ID: {textId} is not available.");
+			ChangeID(textId);
+		}
 
+		public bool ChangeID(string textId)
+		{
+			if (!Localizer.Has(textId))
+			{
+				Debug.LogError($"Text ID: {textId} is not available.");
+				return false;
+			}
+
+			this.textId = textId;
+			var text = Localizer.GetTextFromId(textId);
 			injector.Inject(text, this);
+			return true;
 		}
 	}
 }

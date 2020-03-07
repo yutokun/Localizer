@@ -114,6 +114,16 @@ namespace yutoVR.Localizer
 		}
 
 		/// <summary>
+		/// Check whether current database has specific Text ID.
+		/// </summary>
+		/// <param name="id">Text ID</param>
+		/// <returns></returns>
+		public static bool Has(string id)
+		{
+			return LocalizedStrings.ContainsKey(id);
+		}
+
+		/// <summary>
 		/// Get localized string from Text ID.
 		/// </summary>
 		/// <param name="id">Text ID</param>
