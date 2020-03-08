@@ -1,7 +1,11 @@
-# Improved
+# New
 
-- No longer uses StreamingAssets. All files were gathered to Localizer directory.
-  - Editor: Assets/Localizer
-  - Windows: Build_Data/Localizer
-  - macOS: AppBundle/Content/Localizer
+![](sample.jpg)
 
+- Revamped Sample Scene.
+- Timeline support for text localizer.
+- Simple sequencing script (beta)
+
+# Fixes
+
+- Avoid some errors.
