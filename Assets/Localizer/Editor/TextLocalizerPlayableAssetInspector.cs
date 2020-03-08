@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace yutoVR.Localizer
 {
-	[CustomEditor(typeof(TextLocalizer))]
-	public class TextLocalizerInspector : Editor
+	[CustomEditor(typeof(TextLocalizerPlayableAsset))]
+	public class TextLocalizerPlayableAssetInspector : Editor
 	{
-		TextLocalizer localizer;
+		TextLocalizerPlayableAsset localizer;
 
 		void OnEnable()
 		{
-			localizer = target as TextLocalizer;
+			localizer = target as TextLocalizerPlayableAsset;
 		}
 
 		public override void OnInspectorGUI()

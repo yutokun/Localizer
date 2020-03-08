@@ -36,9 +36,18 @@ namespace yutoVR.Localizer
 		{
 			if (string.IsNullOrEmpty(textId)) return false;
 
+#if UNITY_EDITOR
+			// for Timeline Preview
+			if (!Application.isPlaying)
+			{
+				Localizer.Load();
+				Prepare();
+			}
+#endif
+
 			if (!Localizer.Has(textId))
 			{
-				Debug.LogError($"Text ID: {textId} is not available.");
+				if (Application.isPlaying) Debug.LogError($"Text ID: {textId} is not available.");
 				return false;
 			}
 
@@ -46,6 +55,12 @@ namespace yutoVR.Localizer
 			var text = Localizer.GetTextFromId(textId);
 			injector.Inject(text, this);
 			return true;
+		}
+
+		public void Clear()
+		{
+			textId = null;
+			injector.Inject("", this);
 		}
 	}
 }
