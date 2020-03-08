@@ -12,6 +12,7 @@ namespace yutoVR.Localizer.Demo
 		[SerializeField, Header("Options")] float interval = 3f;
 		[SerializeField] float fadeDuration = 1f;
 		[SerializeField] bool playOnStart = true;
+		[SerializeField] bool loop = true;
 
 		[SerializeField, Header("Set IDs")] string[] Ids;
 
@@ -44,6 +45,8 @@ namespace yutoVR.Localizer.Demo
 			}
 
 			current = null;
+
+			if (loop) Play();
 		}
 
 		IEnumerator FadeTo(float alpha, float duration)
