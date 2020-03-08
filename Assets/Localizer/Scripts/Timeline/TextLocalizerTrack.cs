@@ -14,7 +14,7 @@ namespace yutoVR.Localizer
 			foreach (var clip in clips)
 			{
 				var asset = clip.asset as TextLocalizerPlayableAsset;
-				clip.displayName = asset.textId ?? "TextLocalizer";
+				clip.displayName = asset.textId;
 			}
 
 			return base.CreateTrackMixer(graph, go, inputCount);
