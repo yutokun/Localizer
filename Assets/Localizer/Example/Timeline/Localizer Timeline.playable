@@ -1251,7 +1251,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: fireDescription2
     m_Version: 1
-  - m_Start: 15
+  - m_Start: 16
     m_ClipIn: 0
     m_Asset: {fileID: 114127793048127652}
     m_Duration: 4
@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Parent: {fileID: 11400000}
   m_Children: []
   m_Clips:
-  - m_Start: 19
+  - m_Start: 20.5
     m_ClipIn: 0
     m_Asset: {fileID: 114750579078492070}
     m_Duration: 1
@@ -1932,11 +1932,11 @@ MonoBehaviour:
     m_Recordable: 1
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 1.9999999999999947
+    m_PostExtrapolationTime: 2.9999999999999947
     m_PreExtrapolationTime: 0
     m_DisplayName: Fade Out (2)
     m_Version: 1
-  - m_Start: 15
+  - m_Start: 16
     m_ClipIn: 0
     m_Asset: {fileID: 114016426892384818}
     m_Duration: 1
@@ -1983,11 +1983,11 @@ MonoBehaviour:
     m_Recordable: 1
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 1.9999999999999787
+    m_PostExtrapolationTime: 1.9999999999999574
     m_PreExtrapolationTime: 0
     m_DisplayName: Fade In (3)
     m_Version: 1
-  - m_Start: 17.99999999999998
+  - m_Start: 18.999999999999957
     m_ClipIn: 0
     m_Asset: {fileID: 114477590747876300}
     m_Duration: 1
