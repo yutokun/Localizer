@@ -5,9 +5,10 @@ return	改行\nあり	You can\nreturn
 explanation	このサンプルでは、Enter キーで言語を切り替えられます。	You can cycle languages with return key in this sample.
 youCanUse	使えます	You can use
 youCanUseManyIds	たくさんの ID を使えます	You can use many IDs.
-fireStory	炎の物語	The Story of Fire
-fireDescription1	火は、古来より人を守り、\n恵みを与え、時に牙を剥きました。	It save, give, and at times hurt us\nsince ancient times.
-fireDescriptionEnd	終	End of Fire
+fireStory	火の物語	The Story of Fire
+fireDescription1	火は、古来より人を守り、\n恵みを与えました。	It save us and give us\nmany things since ancient times.
+fireDescription2	しかし、時に牙を剥き、\n人を襲うこともありました。	But at times they bare fangs and hurt us.
+fireDescriptionEnd	消灯	Lights Out
 empty		
 nextLanguage	次の言語	Next Language
 replay	リプレイ	Replay
