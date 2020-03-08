@@ -20104,6 +20104,7 @@ MonoBehaviour:
   textMesh: {fileID: 2083725605}
   interval: 2
   fadeDuration: 1
+  playOnStart: 1
   Ids:
   - fireStory
   - fireDescription1

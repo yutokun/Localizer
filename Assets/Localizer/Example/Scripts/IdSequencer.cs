@@ -11,6 +11,7 @@ namespace yutoVR.Localizer.Demo
 
 		[SerializeField, Header("Options")] float interval = 3f;
 		[SerializeField] float fadeDuration = 1f;
+		[SerializeField] bool playOnStart = true;
 
 		[SerializeField, Header("Set IDs")] string[] Ids;
 
@@ -20,7 +21,7 @@ namespace yutoVR.Localizer.Demo
 		void Start()
 		{
 			initialAlpha = textMesh.color.a;
-			Play();
+			if (playOnStart) Play();
 		}
 
 		public void Play()
