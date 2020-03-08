@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace yutoVR.Localizer
 {
-	public class PathProvider : MonoBehaviour
+	public static class PathProvider
 	{
 		internal static string LocalizerDirectory => Path.Combine(Application.dataPath, "Localizer");
 		public static string SheetName => "LocalizedStrings.tsv";
