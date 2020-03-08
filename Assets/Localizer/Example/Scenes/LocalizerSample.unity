@@ -14849,7 +14849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 1298671437}
-  light: {fileID: 1432463466}
+  floorLight: {fileID: 1432463466}
 --- !u!1 &1350519223
 GameObject:
   m_ObjectHideFlags: 0
@@ -15036,7 +15036,7 @@ GameObject:
   - component: {fileID: 1432463467}
   - component: {fileID: 1432463466}
   m_Layer: 0
-  m_Name: Light
+  m_Name: FloorLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

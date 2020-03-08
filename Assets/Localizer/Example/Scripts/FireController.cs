@@ -6,18 +6,18 @@ namespace yutoVR.Localizer.Demo
 	public class FireController : MonoBehaviour, ITimeControl
 	{
 		[SerializeField] ParticleSystem particle;
-		[SerializeField] ScaleRandomizer light;
+		[SerializeField] ScaleRandomizer floorLight;
 
 		void Play()
 		{
 			particle.Play();
-			light.Play();
+			floorLight.Play();
 		}
 
 		void Stop()
 		{
 			particle.Stop();
-			light.Stop();
+			floorLight.Stop();
 		}
 
 		public void SetTime(double time) { }
