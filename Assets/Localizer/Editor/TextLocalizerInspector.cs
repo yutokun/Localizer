@@ -34,7 +34,7 @@ namespace yutoVR.Localizer
 				EditorGUILayout.HelpBox($"Please enter a Text ID.", MessageType.Info);
 
 				var postfix = keys.Count > 5 ? $"\n\n<i>and more (a total of {keys.Count.ToString()} IDs)</i>" : "";
-				ShowSuggestion(keys.ToList(), 5, postfix);
+				ShowSuggestion(keys.ToList(), postfix);
 				return;
 			}
 
@@ -54,12 +54,13 @@ namespace yutoVR.Localizer
 			ShowSuggestion(suggestions);
 		}
 
-		void ShowSuggestion(IReadOnlyCollection<string> suggestions, int limit = int.MaxValue, string postfix = "")
+		void ShowSuggestion(IReadOnlyCollection<string> suggestions, string postfix = "")
 		{
 			var noSuggestion = suggestions.Count == 0;
 			var exactMatch = suggestions.Count == 1 && suggestions.First() == localizer.textId;
 			if (noSuggestion || exactMatch) return;
 
+			var limit = EditorSettings.current.maxSuggestion;
 			var text = suggestions.Take(limit)
 			                      .Aggregate("\n<b>ID Suggest</b>\n", (current, item) => $"{current}\n- {GetMarkedIdRepresentation(item)}");
 			text += string.IsNullOrEmpty(postfix) ? "" : postfix;
