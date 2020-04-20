@@ -22,8 +22,7 @@ namespace yutoVR.Localizer
 		static void DrawSettingsPanel(ref EditorSettings.SettingsDefinition settings)
 		{
 			EditorGUILayout.LabelField("Settings", EditorStyles.boldLabel);
-			var maxSuggestion = EditorGUILayout.IntField("Max Suggestion", settings.maxSuggestion);
-			settings.maxSuggestion = maxSuggestion;
+			settings.maxSuggestion = EditorGUILayout.IntField("Max Suggestion", settings.maxSuggestion);
 			EditorGUILayout.Space();
 			if (GUILayout.Button("Reset All")) ResetAllSettings();
 		}
