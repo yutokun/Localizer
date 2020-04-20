@@ -1,3 +1,4 @@
 {
-    "maxSuggestion": 50
+    "maxSuggestion": 50,
+    "enableTMP": true
 }

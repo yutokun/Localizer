@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿#if LOCALIZER_TMP
+using TMPro;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +12,11 @@ namespace yutoVR.Localizer
 
 		protected override void Prepare()
 		{
+#if LOCALIZER_TMP
 			var component = ComponentFinder.Find<TextMesh, Text, TMP_Text>(this);
+#else
+			var component = ComponentFinder.Find<TextMesh, Text>(this);
+#endif
 			if (component == null) return;
 
 			if (component is TextMesh textMesh)
@@ -21,10 +27,12 @@ namespace yutoVR.Localizer
 			{
 				injector = new UITextInjector(text);
 			}
+#if LOCALIZER_TMP
 			else if (component is TMP_Text tmp)
 			{
 				injector = new TMPInjector(tmp);
 			}
+#endif
 		}
 
 		internal override void Localize()
