@@ -11,5 +11,8 @@ namespace yutoVR.Localizer
 
 		public static string SheetPath => Path.Combine(LocalizerDirectory, SheetName);
 		internal static string SettingsPath => Path.Combine(LocalizerDirectory, SettingsName);
+#if UNITY_EDITOR
+		public static string EditorSettingsPath => Path.Combine(LocalizerDirectory, "Editor", "EditorSettings.json");
+#endif
 	}
 }
