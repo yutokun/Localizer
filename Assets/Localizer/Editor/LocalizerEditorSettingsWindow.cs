@@ -16,11 +16,18 @@ namespace yutoVR.Localizer
 		{
 			var prevSettings = EditorSettings.current.Clone();
 			DrawSettingsPanel(ref EditorSettings.current);
-			if (prevSettings.enableTMP != EditorSettings.current.enableTMP && EditorSettings.current.enableTMP)
+			if (prevSettings.enableTMP != EditorSettings.current.enableTMP)
 			{
-				var enableTMP = AskToEnableTMP();
-				EditorSettings.current.enableTMP = enableTMP;
-				if (!enableTMP) { } // TODO Enable TMP Integration
+				if (EditorSettings.current.enableTMP)
+				{
+					var enableTMP = AskToEnableTMP();
+					EditorSettings.current.enableTMP = enableTMP;
+					if (enableTMP) TMPIntegrationSwitcher.Enable();
+				}
+				else
+				{
+					TMPIntegrationSwitcher.Disable();
+				}
 			}
 
 			if (EditorSettings.current != prevSettings) EditorSettings.SaveEditorSettings();
@@ -44,7 +51,7 @@ namespace yutoVR.Localizer
 		static void ResetAllSettings()
 		{
 			EditorSettings.ResetAll();
-			// TODO Disable TMP
+			TMPIntegrationSwitcher.Disable();
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿#if LOCALIZER_TMP
+using TMPro;
 
 namespace yutoVR.Localizer
 {
@@ -17,3 +18,4 @@ namespace yutoVR.Localizer
 		}
 	}
 }
+#endif
