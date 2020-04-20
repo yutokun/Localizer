@@ -1,11 +1,8 @@
 # New
 
-![](sample.jpg)
+![](sample.png)
 
-- Revamped Sample Scene.
-- Timeline support for text localizer.
-- Simple sequencing script (beta)
-
-# Fixes
-
-- Avoid some errors.
+- Settings Window
+  - Window -> Localizer
+  - Set text suggestion limit in editor.
+  - Switch TextMesh Pro Integration.

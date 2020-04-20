@@ -1,1 +1,1 @@
-New Sample Scene and Initial Timeline Support
+Settings Window and better TMP handling
