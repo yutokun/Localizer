@@ -106,6 +106,12 @@ Localizer.Load();
 Localizer.InjectAll();
 ```
 
+## Use TextMesh Pro
+
+if you want to use this asset with TextMesh Pro, you need to enable TMP Integration. It's easy, just check a box.
+
+![Enable TMP](doc/EnableTMP.png)
+
 ## Licenses
 
 ### create-unitypackage
