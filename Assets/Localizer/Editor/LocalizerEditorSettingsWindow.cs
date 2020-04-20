@@ -16,6 +16,13 @@ namespace yutoVR.Localizer
 		{
 			var prevSettings = EditorSettings.current.Clone();
 			DrawSettingsPanel(ref EditorSettings.current);
+			if (prevSettings.enableTMP != EditorSettings.current.enableTMP && EditorSettings.current.enableTMP)
+			{
+				var enableTMP = AskToEnableTMP();
+				EditorSettings.current.enableTMP = enableTMP;
+				if (!enableTMP) { } // TODO Enable TMP Integration
+			}
+
 			if (EditorSettings.current != prevSettings) EditorSettings.SaveEditorSettings();
 		}
 
@@ -23,13 +30,21 @@ namespace yutoVR.Localizer
 		{
 			EditorGUILayout.LabelField("Settings", EditorStyles.boldLabel);
 			settings.maxSuggestion = EditorGUILayout.IntField("Max Suggestion", settings.maxSuggestion);
+			settings.enableTMP = EditorGUILayout.Toggle("TextMesh Pro Integration", settings.enableTMP);
 			EditorGUILayout.Space();
 			if (GUILayout.Button("Reset All")) ResetAllSettings();
+		}
+
+		static bool AskToEnableTMP()
+		{
+			const string message = "This causes compilation errors if your project doesn't have TextMesh Pro. Would you like to do it?";
+			return EditorUtility.DisplayDialog("Enable TextMesh Pro Integration", message, "Enable", "Keep it disabled");
 		}
 
 		static void ResetAllSettings()
 		{
 			EditorSettings.ResetAll();
+			// TODO Disable TMP
 		}
 	}
 }

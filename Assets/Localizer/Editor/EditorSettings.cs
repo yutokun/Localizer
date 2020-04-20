@@ -9,6 +9,7 @@ namespace yutoVR.Localizer
 		public class SettingsDefinition
 		{
 			public int maxSuggestion = 50;
+			public bool enableTMP = false;
 
 			public SettingsDefinition Clone() => (SettingsDefinition)MemberwiseClone();
 		}
