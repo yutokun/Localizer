@@ -45,6 +45,7 @@ Thumbs.db
 *.apk
 *.mp4
 Assets/AssetStoreTools*
+UnityVersionTester/
 
 *.log #log files, for some plugins
 *.pyc #python bytecode cache, for some plugins.
